@@ -37,7 +37,7 @@ else
 fi
 
 ODOO_CMD="odoo \
-    --http-port=\"${PORT}\" \
+    --http-port=${PORT} \
     --without-demo=True \
     --proxy-mode \
     --data-dir=\"/var/lib/odoo\" \
