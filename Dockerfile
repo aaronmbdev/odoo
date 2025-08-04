@@ -13,6 +13,9 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends locales netc
 
 WORKDIR /app
 
+# Ensure the odoo data directory exists and has proper permissions
+RUN mkdir -p /var/lib/odoo/filestore && chown -R odoo:odoo /var/lib/odoo
+
 COPY --chmod=755 entrypoint.sh ./
 
 ENTRYPOINT ["/bin/sh"]
