@@ -1,0 +1,54 @@
+# Ignore OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Ignore logs
+*.log
+logs/
+
+# Ignore runtime data
+pids/
+*.pid
+*.seed
+
+# Ignore environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore backup files
+*.bak
+*.backup
+*.sql
+*.dump
+
+# Ignore temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Ignore Railway files (except railway.json)
+.railway/
+
+# Ignore Docker files (if any)
+docker-compose.override.yml
+
+# Ignore Odoo specific files that shouldn't be in repo
+odoo.conf
+addons/
+filestore/

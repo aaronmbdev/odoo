@@ -2,17 +2,31 @@
 
 set -e
 
-echo "Waiting for database..."
+echo "Starting Odoo..."
 
-while ! nc -z ${ODOO_DATABASE_HOST} ${ODOO_DATABASE_PORT} 2>&1; do sleep 1; done; 
+# Wait for database to be available
+echo "Waiting for database connection..."
+while ! nc -z "${ODOO_DATABASE_HOST}" "${ODOO_DATABASE_PORT}" 2>/dev/null; do
+    echo "Database not ready, waiting..."
+    sleep 2
+done
+echo "Database is available!"
 
-echo "Database is now available"
+# Set up data directory with proper permissions
+echo "Setting up Odoo data directory..."
+mkdir -p /var/lib/odoo/filestore
+mkdir -p /var/lib/odoo/sessions
+mkdir -p /var/lib/odoo/addons
 
-echo "Switching to odoo user and starting Odoo..."
+# Ensure proper ownership
+chown -R odoo:odoo /var/lib/odoo
+chmod -R 755 /var/lib/odoo
 
-# Run as odoo user with proper argument handling
+echo "Starting Odoo server on port ${PORT:-8069}..."
+
+# Start Odoo as the odoo user
 exec runuser -u odoo -- odoo \
-    --http-port=${PORT} \
+    --http-port=${PORT:-8069} \
     --without-demo=True \
     --proxy-mode \
     --data-dir=/var/lib/odoo \
