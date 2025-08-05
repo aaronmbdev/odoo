@@ -35,6 +35,7 @@ exec runuser -u odoo -- odoo \
     --db_user="${ODOO_DATABASE_USER}" \
     --db_password="${ODOO_DATABASE_PASSWORD}" \
     --database="${ODOO_DATABASE_NAME}" \
+    --db_template=template0 \
     --smtp="${ODOO_SMTP_HOST}" \
     --smtp-port=${ODOO_SMTP_PORT_NUMBER} \
     --smtp-user="${ODOO_SMTP_USER}" \
