@@ -28,7 +28,6 @@ echo "Starting Odoo server on port ${PORT:-8069}..."
 exec runuser -u odoo -- odoo \
     --http-port=${PORT:-8069} \
     --without-demo=True \
-    -i base \
     --proxy-mode \
     --data-dir=/var/lib/odoo \
     --db_host="${ODOO_DATABASE_HOST}" \
