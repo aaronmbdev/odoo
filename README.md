@@ -28,12 +28,6 @@ ODOO_DATABASE_PASSWORD=<postgres-password>
 ODOO_DATABASE_NAME=odoo_production
 ```
 
-**Security Note:** For production, it's recommended to create a dedicated database user instead of using 'postgres'. You can do this by connecting to your PostgreSQL service and running:
-```sql
-CREATE USER odoo_user WITH CREATEDB PASSWORD 'your_secure_password';
-```
-Then use `odoo_user` as your `ODOO_DATABASE_USER`.
-
 ### 3. Add Volume
 
 ⚠️ **Important**: You must manually create a volume in Railway dashboard:
